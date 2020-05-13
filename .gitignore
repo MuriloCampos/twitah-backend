@@ -90,3 +90,6 @@ typings/
 # Ignoring tmp files but keeping the folder
 tmp/*
 !tmp/.gitkeep
+
+# Ignoring build files
+dist/

@@ -1,3 +1,5 @@
+const { join } = require('path');
+
 module.exports = {
   "type": "postgres",
   "host": process.env.DB_HOST,
@@ -5,9 +7,9 @@ module.exports = {
   "username": process.env.DB_USERNAME,
   "password": process.env.DB_PASSWORD,
   "database": process.env.DB_DATABASE,
-  "entities": ["./src/models/*.ts"],
+  "entities": ['dist/models/*.js'],
   "migrations": [
-    "./src/database/migrations/*.ts"
+    "dist/database/migrations/*.js"
   ],
   "cli": {
     "migrationsDir": "./src/database/migrations"
