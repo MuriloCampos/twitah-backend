@@ -86,3 +86,7 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# Ignoring tmp files but keeping the folder
+tmp/*
+!tmp/.gitkeep
