@@ -1,7 +1,10 @@
 {
   "name": "twitah-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./src/server.ts",
+  "engines": {
+    "node": "12.16.x"
+  },
   "repository": "https://github.com/MuriloCampos/twitah-backend.git",
   "license": "MIT",
   "scripts": {
