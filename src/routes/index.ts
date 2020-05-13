@@ -53,15 +53,17 @@ routes.put('/users', upload.any(), async (request, response) => {
     let cover_filename = 'undefined';
 
     if(request.files.length){
-      request.files.forEach((file: File) => {
-        if (file.fieldname === 'avatar') {
-          avatar_filename = file.filename;
+      const files: File[] = request.files as File[];
+
+      for(let i = 0; i < files.length; ++i) {
+        if(files[i].fieldname === 'avatar'){
+          avatar_filename = files[i].filename;
         }
 
-        if (file.fieldname === 'cover') {
-          cover_filename = file.filename;
+        if(files[i].fieldname === 'cover'){
+          cover_filename = files[i].filename;
         }
-      });
+      }
     }
 
     const user = await updateUser.execute({
