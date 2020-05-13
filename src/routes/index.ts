@@ -45,6 +45,11 @@ routes.get('/users', async (request, response) => {
 });
 
 routes.put('/users', upload.any(), async (request, response) => {
+  const usersRepository = getRepository(User);
+
+  const users = await usersRepository.find();
+  const user = users[0];
+
   try {
     const updateUser = new UpdateUserService();
 
@@ -66,13 +71,13 @@ routes.put('/users', upload.any(), async (request, response) => {
       }
     }
 
-    const user = await updateUser.execute({
-      user_id: 'da188d42-0948-4a3e-b0b5-a9f2ad5d49f6',
+    const updatedUser = await updateUser.execute({
+      user_id: user.id,
       name,
       avatar_filename,
       cover_filename
     });
-    return response.json(user);
+    return response.json(updatedUser);
   } catch (err) {
     return response.status(400).json({ error: err.message });
   }
